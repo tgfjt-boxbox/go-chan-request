@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/tgfjt-boxbox/go-chan-request/client"
 	"github.com/tgfjt-boxbox/go-chan-request/models"
+	client "github.com/tgfjt-boxbox/go-chan-request/utils"
 )
 
 func TestMain(m *testing.M) {
@@ -17,7 +17,7 @@ func TestMain(m *testing.M) {
 func TestGetTopStories(t *testing.T) {
 	var err error
 	var c *http.Client
-	var storyIds []uint64
+	var storyIds []uint
 
 	c = client.GetClient()
 	storyIds, err = models.GetTopStories(c)

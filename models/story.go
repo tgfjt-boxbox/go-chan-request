@@ -14,7 +14,6 @@ const (
 )
 
 type Story struct {
-	ID    uint64 `json:"id"`
 	Title string `json:"title"`
 	Url   string `json:"url"`
 }
@@ -23,15 +22,13 @@ func (story *Story) EchoTitle() {
 	fmt.Println(fmt.Sprintf("「%s」", story.Title))
 }
 
-func GetTopStories(c *http.Client) ([]uint64, error) {
+func GetTopStories(c *http.Client) ([]uint, error) {
 	var err error
-	var storyIds []uint64
+	var storyIds []uint
 
 	req, _ := http.NewRequest("GET", stories, nil)
 
 	res, err := c.Do(req)
-
-	fmt.Println("Requested.")
 
 	if err != nil {
 		return storyIds, errors.WithStack(err)
@@ -46,7 +43,7 @@ func GetTopStories(c *http.Client) ([]uint64, error) {
 	return storyIds, nil
 }
 
-func GetStory(c *http.Client, sID uint64) (Story, error) {
+func GetStory(c *http.Client, sID uint) (Story, error) {
 	var err error
 	var story Story
 
