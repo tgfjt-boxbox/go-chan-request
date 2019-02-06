@@ -1,6 +1,6 @@
-# go chan request
+# sample with goroutine
 
-Just a sample to request apis w/ goroutin.
+Just a sample to request apis w/ goroutine.
 
 ## Spec
 
