@@ -26,7 +26,7 @@ func main() {
 
 	fmt.Println("got topstories IDs successfully.")
 
-	var storiesMap = make(map[uint]*models.Story, len(storyIds))
+	storiesMap := make(map[uint]*models.Story, len(storyIds))
 
 	getStory := func(sID uint, list map[uint]*models.Story) {
 		defer wg.Done()
@@ -39,7 +39,7 @@ func main() {
 		mu.Lock()
 		defer mu.Unlock()
 
-		list[sID] = &story
+		list[sID] = story
 	}
 
 	for _, sID := range storyIds {

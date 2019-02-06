@@ -43,7 +43,7 @@ func GetTopStories(c *http.Client) ([]uint, error) {
 	return storyIds, nil
 }
 
-func GetStory(c *http.Client, sID uint) (Story, error) {
+func GetStory(c *http.Client, sID uint) (*Story, error) {
 	var err error
 	var story Story
 
@@ -51,14 +51,14 @@ func GetStory(c *http.Client, sID uint) (Story, error) {
 	res, err := c.Do(req)
 
 	if err != nil {
-		return story, errors.WithStack(err)
+		return &story, errors.WithStack(err)
 	}
 
 	err = json.NewDecoder(res.Body).Decode(&story)
 
 	if err != nil {
-		return story, errors.WithStack(err)
+		return &story, errors.WithStack(err)
 	}
 
-	return story, nil
+	return &story, nil
 }
