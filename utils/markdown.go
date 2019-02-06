@@ -26,8 +26,11 @@ func SaveLinks(ids []uint, list map[uint]*models.Story) {
 
 	// in order of topstories
 	for _, id := range ids {
-		story := list[id]
-		writer.WriteString(fmt.Sprintf("- [%s](%s)", story.Title, story.Url) + "\n")
+		story, ok := list[id]
+
+		if ok {
+			writer.WriteString(fmt.Sprintf("- [%s](%s)", story.Title, story.Url) + "\n")
+		}
 	}
 
 	writer.Flush()
