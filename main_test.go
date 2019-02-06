@@ -33,10 +33,9 @@ func TestGetTopStories(t *testing.T) {
 func TestGetStory(t *testing.T) {
 	var err error
 	var c *http.Client
-	var story models.Story
 
 	c = client.GetClient()
-	story, err = models.GetStory(c, 19064875)
+	story, err := models.GetStory(c, 19064875)
 
 	if err != nil {
 		t.Error(err)
